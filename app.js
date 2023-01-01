@@ -5,14 +5,22 @@ Sources:
 */
 
 // Timer
-var year = 2023;
-//var countDownDate = new Date("Jan 1, 2023 00:00:00").getTime();
-var countDownDate = new Date("Dec 31, 2022 22:32:50").getTime();
+var year = new Date().getFullYear() + 1;
+var prev = year - 1; // helps to keep the "happy new year" sign 1 day into the New Year.
+var prevNewYear = new Date(prev, 0, 1, 0, 0, 0); 
+var countDownDate = new Date(year, 0, 1, 0, 0, 0, 0); 
+
+function play() {
+    var audio = new Audio("./Files/music.mp3");
+    audio.play();
+};
 
 var x = setInterval(function() {
     var now = new Date().getTime();
     var distance = countDownDate - now;
+    var distance1 = now - prevNewYear;
 
+    var days1 = Math.floor(distance1 / (1000 * 60 * 60 * 24));
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -52,11 +60,6 @@ var x = setInterval(function() {
     }
 
     document.getElementById("timer").innerHTML = outputFormat(days, hours, minutes, seconds);
-
-    function play() {
-    	var audio = new Audio("./Files/music.mp3");
-    	audio.play();
-    };
 
     if(distance <= 0 && hours >= -24) {
         /*const aYearFromNow = new Date();
