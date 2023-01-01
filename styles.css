@@ -1,0 +1,17 @@
+body {
+    background-image: url("./files/nyc.jpg");
+    background-color: #cccccc; 
+    height: 500px; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+p {
+    text-align: center;
+    font-size: 1.875em;
+}
+
+h1 {
+    text-align: center;
+}
