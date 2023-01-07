@@ -1,3 +1,7 @@
 # New-Year-Countdown
 
-A basic rust-scratcher of my web programming skills. Was used for New Year 2023. Barely works.
+This is a simple new year countdown website that I made to try web programming. 
+
+If it's within the first 7 days into the new year, the website will display a celebratory 'happy new year' sign and flash the new year number. 
+
+Otherwise, there is a live countdown timer in days, hours, minutes, and seconds. If the time remaining of the year is less than 1 day/hour/minute, that parameter will not be displayed in the countodwn. 
