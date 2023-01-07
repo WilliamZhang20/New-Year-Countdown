@@ -8,14 +8,13 @@ Sources:
 // Timer
 var year = new Date().getFullYear() + 1;
 var prev = year - 1;
-var prevNewYear = new Date(prev, 0, 1, 0, 0, 0); 
-var countDownDate = new Date(year, 0, 1, 0, 0, 0, 0); 
+var prevNewYear = new Date(prev, 0, 1, 0, 0, 0).getTime(); 
+var countDownDate = new Date(year, 0, 1, 0, 0, 0).getTime(); 
 
 function play() {
     var audio = document.getElementById("myAudio");
     audio.play();
 };
-
 
 var x = setInterval(function() {
     var now = new Date().getTime();
@@ -42,7 +41,7 @@ var x = setInterval(function() {
 	else if(hours==1) {
 	    output += hours + " hour, ";
         }
-        if(minutes!=1) {
+        if(minutes>1) {
             output += minutes + " minutes, " + seconds + " second";
 	    if(seconds!=1) {
 		output += "s";
@@ -69,7 +68,8 @@ var x = setInterval(function() {
 
     document.getElementById("timer").innerHTML = outputFormat(days, hours, minutes, seconds);
 
-    if(distance == 0) {
+    if(distance <= 0) {
+	play();
         clearInterval(x);
 	document.getElementById("timer").innerHTML = "!!!! " + year + " !!!!";
 	document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
@@ -80,16 +80,15 @@ var x = setInterval(function() {
     	    var ele = document.getElementById("timer");
     	    ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden');
 	}, blink_speed);
-	play();
     } 
     else if(days1 <= 7) {
+	play();
         clearInterval(x);
 	document.getElementById("timer").innerHTML = "!!!! " + prev + " !!!!";
 	document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
 	document.getElementById("timer").style.fontWeight = "bold";
 	document.getElementById("timer").style.color = "#ff9933";
 	var blink_speed = 1000; 
-	play();
 	var t = setInterval(function () {
     	    var ele = document.getElementById("timer");
     	    ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden');
