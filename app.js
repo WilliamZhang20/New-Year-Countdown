@@ -2,16 +2,17 @@
 Sources:
 - https://www.w3schools.com/howto/howto_js_countdown.asp
 - https://stackoverflow.com/questions/33070428/add-a-year-to-todays-date
+- https://stackoverflow.com/questions/8360130/how-to-make-a-text-flash-in-html-javascript
 */
 
 // Timer
 var year = new Date().getFullYear() + 1;
-var prev = year - 1; // helps to keep the "happy new year" sign 1 day into the New Year.
+var prev = year - 1;
 var prevNewYear = new Date(prev, 0, 1, 0, 0, 0); 
 var countDownDate = new Date(year, 0, 1, 0, 0, 0, 0); 
 
 function play() {
-    var audio = new Audio("./Files/music.mp3");
+    var audio = document.getElementById("myAudio");
     audio.play();
 };
 
@@ -61,20 +62,34 @@ var x = setInterval(function() {
 
     document.getElementById("timer").innerHTML = outputFormat(days, hours, minutes, seconds);
 
-    if(distance <= 0 && hours >= -24) {
-        /*const aYearFromNow = new Date();
-  	aYearFromNow.setFullYear(aYearFromNow.getFullYear() + 1);
-	countDownDate = aYearFromNow.getTime();	*/
-        clearInterval(x);
-	document.getElementById("timer").innerHTML = year + "!!!!!";
-        document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
+    if(distance <= 0) {
 	play();
-    }  else {
+        clearInterval(x);
+	document.getElementById("timer").innerHTML = "!!!! " + year + " !!!!";
+	document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
+	document.getElementById("timer").style.fontWeight = "bold";
+	document.getElementById("timer").style.color = "#cc6600";
+	var blink_speed = 1000; 
+	var t = setInterval(function () {
+    	    var ele = document.getElementById("timer");
+    	    ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden');
+	}, blink_speed);
+    } 
+    else if(days1 <= 7) {
+	play();
+        clearInterval(x);
+	document.getElementById("timer").innerHTML = "!!!! " + prev + " !!!!";
+	document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
+	document.getElementById("timer").style.fontWeight = "bold";
+	document.getElementById("timer").style.color = "#cc6600";
+	var blink_speed = 1000; 
+	var t = setInterval(function () {
+    	    var ele = document.getElementById("timer");
+    	    ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden');
+	}, blink_speed);
+    }
+    else {
 	document.getElementById("head").innerHTML = "New Year Countdown";
     }
 
 }, 1000);
-
-
-
-
