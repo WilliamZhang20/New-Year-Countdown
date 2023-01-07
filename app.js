@@ -42,11 +42,17 @@ var x = setInterval(function() {
 	    output += hours + " hour, ";
         }
         if(minutes>1) {
-            output += minutes + " minutes, " + seconds + " seconds";
+            output += minutes + " minutes, " + seconds + " second";
+	    if(seconds!=1) {
+		output += "s";
+            }  
         }
 	else if(minutes==1) {
-	    output += minutes + " minute, " + seconds + " seconds";
-        }  
+	    output += minutes + " minute, " + seconds + " second";
+            if(seconds!=1) {
+		output += "s";
+            }  
+        }    
         else {
 	    output = ":";
             if(seconds<10) {
@@ -62,13 +68,13 @@ var x = setInterval(function() {
 
     document.getElementById("timer").innerHTML = outputFormat(days, hours, minutes, seconds);
 
-    if(distance <= 0) {
+    if(distance == 0) {
 	play();
         clearInterval(x);
 	document.getElementById("timer").innerHTML = "!!!! " + year + " !!!!";
 	document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
 	document.getElementById("timer").style.fontWeight = "bold";
-	document.getElementById("timer").style.color = "#cc6600";
+	document.getElementById("timer").style.color = "#ff9933";
 	var blink_speed = 1000; 
 	var t = setInterval(function () {
     	    var ele = document.getElementById("timer");
@@ -81,7 +87,7 @@ var x = setInterval(function() {
 	document.getElementById("timer").innerHTML = "!!!! " + prev + " !!!!";
 	document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
 	document.getElementById("timer").style.fontWeight = "bold";
-	document.getElementById("timer").style.color = "#cc6600";
+	document.getElementById("timer").style.color = "#ff9933";
 	var blink_speed = 1000; 
 	var t = setInterval(function () {
     	    var ele = document.getElementById("timer");
