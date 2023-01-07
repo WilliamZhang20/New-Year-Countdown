@@ -16,6 +16,7 @@ function play() {
     audio.play();
 };
 
+
 var x = setInterval(function() {
     var now = new Date().getTime();
     var distance = countDownDate - now;
@@ -41,7 +42,7 @@ var x = setInterval(function() {
 	else if(hours==1) {
 	    output += hours + " hour, ";
         }
-        if(minutes>1) {
+        if(minutes!=1) {
             output += minutes + " minutes, " + seconds + " second";
 	    if(seconds!=1) {
 		output += "s";
@@ -52,7 +53,7 @@ var x = setInterval(function() {
             if(seconds!=1) {
 		output += "s";
             }  
-        }    
+        }  
         else {
 	    output = ":";
             if(seconds<10) {
@@ -69,7 +70,6 @@ var x = setInterval(function() {
     document.getElementById("timer").innerHTML = outputFormat(days, hours, minutes, seconds);
 
     if(distance == 0) {
-	play();
         clearInterval(x);
 	document.getElementById("timer").innerHTML = "!!!! " + year + " !!!!";
 	document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
@@ -80,15 +80,16 @@ var x = setInterval(function() {
     	    var ele = document.getElementById("timer");
     	    ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden');
 	}, blink_speed);
+	play();
     } 
     else if(days1 <= 7) {
-	play();
         clearInterval(x);
 	document.getElementById("timer").innerHTML = "!!!! " + prev + " !!!!";
 	document.getElementById("head").innerHTML = "HAPPY NEW YEAR!!!!";
 	document.getElementById("timer").style.fontWeight = "bold";
 	document.getElementById("timer").style.color = "#ff9933";
 	var blink_speed = 1000; 
+	play();
 	var t = setInterval(function () {
     	    var ele = document.getElementById("timer");
     	    ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden');
