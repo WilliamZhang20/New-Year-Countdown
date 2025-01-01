@@ -35,7 +35,7 @@ var x = setInterval(function() {
 	else if(days==1) {
 	    output += days + " day, ";
         }
-        if(hours>0) {
+        if(hours>1) {
             output += hours + " hours, ";
         } 
 	else if(hours==1) {
